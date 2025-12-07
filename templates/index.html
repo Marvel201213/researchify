@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="static/style.css" />
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: { "[+]": [["$", "$"]] }
+        }
+      };
+    </script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+    ></script>
+    <title>Researchify</title>
+  </head>
+  <body>
+    <nav>
+      <ul class="topnav">
+        <li>
+          <a href="#Default" class = "active">Random Article Generator</a>
+        </li>
+        <li><a href="#Stored">Personal Collection</a></li>
+        <h1>Researchify</h1>
+        <li class = 'last'>
+          <a href="#Login" >LogIn</a>
+        </li>
+      </ul>
+    </nav>
+    <ul>
+      {% for article in articles %}
+      <li class = 'article'>
+        <h2><a href= {{article.get_link()}}>{{article.get_title()}}</a></h1>
+      <p>{{article.get_abstract()}}</p>
+      </li>
+      {% endfor %}
+      <script>MathJax.typesetPromise();</script>
+      
+    </ul>
+    
+    <footer></footer>
+  </body>
+  <script>
+    const currentYear = new Date().getFullYear();
+    const footer = document.querySelector("footer");
+    footer.textContent = "© " + currentYear + " Akshath Sivachidhambaram";
+  </script>
+</html>
