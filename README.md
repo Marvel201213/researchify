@@ -1,4 +1,4 @@
-# Overview of the Project Functionality
+# Overview of Project Functionality
 ***Researchify*** is a website that scrapes research papers by category from **ARXIV**, obtaining each paper's abstract, title, and link. It returns a random selection of five recent articles from the categories of mathematics, statistics, computer science, quantitative finance, and electrical engineering and systems science. Then, it displays these articles to the user, with the ability to generate new random selections of articles with filtering by category. Users can also save their favorite articles if they have an account, and they can access these saved articles on the website.
 
 # Technologies
