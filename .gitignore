@@ -1,0 +1,6 @@
+static/venv/
+static/__pycache__/
+static/uv.lock
+static/.python-version
+.vscode/settings.json
+__pycache__/

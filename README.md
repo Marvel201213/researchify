@@ -1,0 +1,3 @@
+Researchify is a website that utilizes Python's BeautifulSoup and Requests Library to scraping research papers by category from ARXIV, obtaining each paper's abstract, title, and link, returning a random selection of five recent articles from the categories of mathematics, statistics, computer science, quantitative finance, and electrical engineering and systems science. I utilized the Flask Python framework as a backend server to render the results of the web-scraping utilizing HTML and CSS onto a webpage. I will add authorization functionality, under which individuals can store favorite articles, which I plan on storing on a SQLite database. 
+
+After cloning this project, run "pip install -r requirements.txt" to install all dependencies used by this project. 
