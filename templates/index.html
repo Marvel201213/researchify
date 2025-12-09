@@ -7,7 +7,11 @@
     <script>
       MathJax = {
         tex: {
-          inlineMath: { "[+]": [["$", "$"]] }
+          inlineMath: [
+            ["$", "$"],
+            ["\\(", "\\)"]
+          ],
+          processEscapes: true
         }
       };
     </script>
@@ -22,31 +26,53 @@
     <nav>
       <ul class="topnav">
         <li>
-          <a href="#Default" class = "active">Random Article Generator</a>
+          <a href="#Default" class="active">Random Article Generator</a>
         </li>
         <li><a href="#Stored">Personal Collection</a></li>
-        <h1>Researchify</h1>
-        <li class = 'last'>
-          <a href="#Login" >LogIn</a>
+        <li class="last">
+          <a href="#Login">LogIn</a>
         </li>
       </ul>
+      <h1 class="site-title">Researchify</h1>
     </nav>
-    <ul>
-      {% for article in articles %}
-      <li class = 'article'>
-        <h2><a href= {{article.get_link()}}>{{article.get_title()}}</a></h1>
-      <p>{{article.get_abstract()}}</p>
-      </li>
-      {% endfor %}
-      <script>MathJax.typesetPromise();</script>
-      
-    </ul>
-    
+    <main class="content-wrapper">
+      <div class="button-parent-container">
+        <a href="{{ url_for('rendered')}}" class="button-primary"
+          >Generate new Articles (click Titles to access ARXIV pages)</a
+        >
+      </div>
+      <ul>
+        {% for category_articles in articles %} {% for article in
+        category_articles %}
+        <li class="article">
+          <h2><a href="{{article.get_link()}}">{{article.get_title()}}</a></h2>
+          <div class="dropdown-container">
+            <button class="dropdown-toggle">
+              <span class="arrow">&#9660;</span>
+            </button>
+            <div class="dropdown-content">
+              <p>{{article.get_abstract()}}</p>
+            </div>
+          </div>
+        </li>
+        {% endfor %} {% endfor %}
+      </ul>
+    </main>
     <footer></footer>
   </body>
   <script>
     const currentYear = new Date().getFullYear();
     const footer = document.querySelector("footer");
     footer.textContent = "© " + currentYear + " Akshath Sivachidhambaram";
+    document.addEventListener("DOMContentLoaded", function () {
+      const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+      dropdownToggles.forEach((button) => {
+        button.addEventListener("click", function () {
+          const container = button.closest(".dropdown-container");
+          container.classList.toggle("show-content");
+        });
+      });
+    });
+    MathJax.typesetPromise();
   </script>
 </html>
