@@ -23,7 +23,8 @@
     <title>Researchify</title>
   </head>
   <body>
-    <nav>
+    <nav class="sticky-nav">
+      <h1 class="site-title">Researchify</h1>
       <ul class="topnav">
         <li>
           <a href="#Default" class="active">Random Article Generator</a>
@@ -33,11 +34,10 @@
           <a href="#Login">LogIn</a>
         </li>
       </ul>
-      <h1 class="site-title">Researchify</h1>
     </nav>
     <main class="content-wrapper">
       <div class="button-parent-container">
-        <a href="{{ url_for('rendered')}}" class="button-primary"
+        <a href="{{ url_for('home')}}" class="button-primary"
           >Generate new Articles (click Titles to access ARXIV pages)</a
         >
       </div>

@@ -11,7 +11,6 @@ body {
   padding: 0;
   background: #f1f3e0;
   padding-bottom: 80px;
-  padding-top: 80px;
   overflow-y: scroll;
 }
 .content-wrapper {
@@ -28,8 +27,8 @@ body {
 
 .site-title {
   font-family: "Lavishly", cursive;
-  color: black;
-  font-size: 30px;
+  color: #f1f3e0;
+  font-size: 45px;
   position: absolute;
   top: 0;
   left: 50%;
@@ -95,7 +94,6 @@ footer {
   z-index: 90;
 }
 ul.topnav {
-  position: static;
   width: 100%;
   list-style-type: none;
   margin: 0;
@@ -105,21 +103,31 @@ ul.topnav {
   border: 0px solid black;
   height: 80px;
   z-index: 100;
+  border-bottom: 2px solid black;
+}
+
+nav.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 ul.topnav li.last {
   float: right;
   margin-left: auto;
+  border-right: none;
+  border-left: 2px solid black;
 }
 ul.topnav li a {
   display: block;
   color: #f1f3e0;
-  padding: 0px 40px;
+  padding: 0px 35px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 17px;
   font-family: "Open Sans", sans-serif;
   height: 80px;
   line-height: 80px;
+  border-right: 2px solid black;
 }
 ul.topnav li a:hover:not(.active) {
   background-color: #778873;
