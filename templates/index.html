@@ -6,12 +6,27 @@
     <link rel="stylesheet" type="text/css" href="static/style.css" />
     <script>
       MathJax = {
+        loader: {
+          load: ["[tex]/color", "[tex]/cancel"]
+        },
         tex: {
           inlineMath: [
             ["$", "$"],
             ["\\(", "\\)"]
           ],
           processEscapes: true
+        },
+        options: {
+          enableMenu: false,
+          processHtmlClass: "tex2jax_process",
+          ignoreHtmlClass: "tex2jax_ignore"
+        },
+        startup: {
+          pageReady() {
+            return MathJax.startup.defaultPageReady().then(function () {
+              initArticleOpen(document);
+            });
+          }
         }
       };
     </script>
@@ -27,9 +42,9 @@
       <h1 class="site-title">Researchify</h1>
       <ul class="topnav">
         <li>
-          <a href="#Default" class="active">Random Article Generator</a>
+          <a href="#Main" class="active">Random Article Generator</a>
         </li>
-        <li><a href="#Stored">Personal Collection</a></li>
+        <li><a href="/saved">Personal Collection</a></li>
         <li class="last">
           <a href="#Login">LogIn</a>
         </li>
@@ -37,11 +52,11 @@
     </nav>
     <main class="content-wrapper">
       <div class="button-parent-container">
-        <a href="{{ url_for('home')}}" class="button-primary"
-          >Generate new Articles (click Titles to access ARXIV pages)</a
-        >
+        <button id="generate-articles-button" class="button-primary">
+          Generate new Articles (click Titles to access ARXIV pages)
+        </button>
       </div>
-      <ul>
+      <ul id="article-list">
         {% for category_articles in articles %} {% for article in
         category_articles %}
         <li class="article">
@@ -64,15 +79,83 @@
     const currentYear = new Date().getFullYear();
     const footer = document.querySelector("footer");
     footer.textContent = "© " + currentYear + " Akshath Sivachidhambaram";
-    document.addEventListener("DOMContentLoaded", function () {
-      const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+    function initArticleOpen(containerElement) {
+      const dropdownToggles = (containerElement || document).querySelectorAll(
+        ".dropdown-toggle"
+      );
       dropdownToggles.forEach((button) => {
-        button.addEventListener("click", function () {
-          const container = button.closest(".dropdown-container");
-          container.classList.toggle("show-content");
-        });
+        button.removeEventListener("click", toggleDropdown);
+        button.addEventListener("click", toggleDropdown);
       });
+      if (window.MathJax && MathJax.typesetPromise) {
+        MathJax.typesetPromise([containerElement || document]);
+      }
+    }
+    function toggleDropdown() {
+      const container = this.closest(".dropdown-container");
+      container.classList.toggle("show-content");
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      const generateButton = document.getElementById(
+        "generate-articles-button"
+      );
+      const articleList = document.getElementById("article-list");
+      function createArticleItem(article) {
+        const li = document.createElement("li");
+        li.className = "article";
+        const title = article["title"];
+        const link = article["link"];
+        const abstract = article["abstract"];
+        li.innerHTML = `
+          <h2><a href="${link}">${title}</a></h2>
+          <div class="dropdown-container">
+            <button class="dropdown-toggle">
+              <span class="arrow">&#9660;</span>
+            </button>
+            <div class="dropdown-content">
+              <p>${abstract}</p>
+            </div>
+          </div>`;
+        return li;
+      }
+
+      if (generateButton) {
+        generateButton.addEventListener("click", function () {
+          articleList.innerHTML =
+            '<li class="article"><p>Loading new articles... (This may take a moment)</p></li>';
+          generateButton.disabled = true;
+          fetch("/get-articles")
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              return response.json();
+            })
+            .then((data) => {
+              articleList.innerHTML = "";
+              const articles = data.articles || [];
+              if (articles.length >= 1) {
+                articles.forEach((category_articles) => {
+                  category_articles.forEach((article) => {
+                    articleList.appendChild(createArticleItem(article));
+                  });
+                });
+              } else {
+                articleList.innerHTML =
+                  '<li class="article"><p>I guess something went wrong with article generation.</p></li>';
+              }
+            })
+            .catch((error) => {
+              console.error("Error fetching articles:", error);
+              articleList.innerHTML =
+                '<li class="article"><p style="color:red;">Error loading articles. Please check the console.</p></li>';
+            })
+            .finally(() => {
+              generateButton.disabled = false;
+              initArticleOpen(articleList);
+            });
+        });
+      }
     });
-    MathJax.typesetPromise();
   </script>
 </html>

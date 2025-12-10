@@ -1,22 +1,22 @@
-beautifulsoup4 @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_78gviqqx_4/croot/beautifulsoup4-split_1752598991684/work
-blinker @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_50ofyjh0pb/croot/blinker_1737448732393/work
-brotlicffi @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_05qpoetyrv/croot/brotlicffi_1736182869800/work
-certifi @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_541lf40aku/croot/certifi_1754570641531/work/certifi
-cffi @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_51d1gdg4kr/croot/cffi_1736183297412/work
-charset-normalizer @ file:///croot/charset-normalizer_1721748349566/work
-click @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_060m0m8my8/croot/click_1754477944034/work
-Flask @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_cfi86723k0/croot/flask_1737454311635/work
-idna @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_2b_jn555_n/croot/idna_1714398852258/work
-itsdangerous @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_f7bt4rtvu8/croot/itsdangerous_1716533350521/work
-Jinja2 @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_f4xtf61_ib/croot/jinja2_1741715270435/work
+beautifulsoup4==4.14.3
+blinker==1.9.0
+certifi==2025.11.12
+cffi==2.0.0
+charset-normalizer==3.4.4
+click==8.3.1
+cryptography==46.0.3
+Flask==3.1.2
+Flask-Login==0.6.3
+idna==3.11
+itsdangerous==2.2.0
+Jinja2==3.1.6
 lxml==6.0.2
-MarkupSafe @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_76vhch455b/croot/markupsafe_1738584048225/work
-pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
-PySocks @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/pysocks_1699239289103/work
-requests @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_3c5r_7_lxu/croot/requests_1750426340266/work
-setuptools==78.1.1
-soupsieve @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/soupsieve_1699283107629/work
-typing_extensions @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_6dn2s8ln8g/croot/typing_extensions_1734714858107/work
-urllib3 @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_f8xnjmnanx/croot/urllib3_1750775879857/work
-Werkzeug @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_feipt8snyf/croot/werkzeug_1737448724848/work
-wheel==0.45.1
+MarkupSafe==3.0.3
+oauthlib==3.3.1
+pycparser==2.23
+pyOpenSSL==25.3.0
+requests==2.32.5
+soupsieve==2.8
+typing_extensions==4.15.0
+urllib3==2.5.0
+Werkzeug==3.1.4

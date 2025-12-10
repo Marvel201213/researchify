@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="static/style.css" />
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ["$", "$"],
+            ["\\(", "\\)"]
+          ],
+          processEscapes: true
+        }
+      };
+    </script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+    ></script>
+    <title>Researchify</title>
+  </head>
+  <body>
+    <nav class="sticky-nav">
+      <h1 class="site-title">Researchify</h1>
+      <ul class="topnav">
+        <li>
+          <a href="/">Random Article Generator</a>
+        </li>
+        <li><a href="#Saved" class="active">Personal Collection</a></li>
+        <li class="last">
+          <a href="#Login">LogIn</a>
+        </li>
+      </ul>
+    </nav>
+    <main class="content-wrapper">
+      <!-- <ul>
+        {% for category_articles in articles %} {% for article in
+        category_articles %}
+        <li class="article">
+          <h2><a href="{{article.get_link()}}">{{article.get_title()}}</a></h2>
+          <div class="dropdown-container">
+            <button class="dropdown-toggle">
+              <span class="arrow">&#9660;</span>
+            </button>
+            <div class="dropdown-content">
+              <p>{{article.get_abstract()}}</p>
+            </div>
+          </div>
+        </li>
+        {% endfor %} {% endfor %}
+      </ul> -->
+    </main>
+    <footer></footer>
+  </body>
+  <script>
+    const currentYear = new Date().getFullYear();
+    const footer = document.querySelector("footer");
+    footer.textContent = "© " + currentYear + " Akshath Sivachidhambaram";
+    document.addEventListener("DOMContentLoaded", function () {
+      const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+      dropdownToggles.forEach((button) => {
+        button.addEventListener("click", function () {
+          const container = button.closest(".dropdown-container");
+          container.classList.toggle("show-content");
+        });
+      });
+    });
+    MathJax.typesetPromise();
+  </script>
+</html>

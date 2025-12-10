@@ -38,6 +38,16 @@ class Article:
     
     def to_string_condensed(self):
         return f"Article Category: {self.category}\nArticle Title: {self.title}\nArticle Link: {self.link}\nDate: {self.date}\nAuthors: {self.authors}"
+    
+    def to_dict(self):
+        return {
+            "category": self.category,
+            "title": self.title,
+            "link": self.link,
+            "date": self.date,
+            "abstract": self.abstract,
+            "authors": self.authors
+        }
 
 def generate_arxiv_pages(fields):
     pages = {}
