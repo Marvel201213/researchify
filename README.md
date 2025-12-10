@@ -1,5 +1,5 @@
 # Overview of Project Functionality
-The website is deployed using Vercel at this link for now: https://researchify-phi.vercel.app/.
+The website is deployed using Vercel at this link for now: https://researchify-phi.vercel.app/. I will implement authorization and storage functionality soon.
 ***Researchify*** is a website that gathers research papers by category from **ARXIV**, obtaining each paper's abstract, title, link, and other relevant information. It returns a random selection of five recent articles from the categories of mathematics, statistics, computer science, quantitative finance, and electrical engineering and systems science. Then, it displays these articles to the user, with the ability to generate new random selections of articles. <!-- Users can also save their favorite articles if they have an account, and they can access these saved articles on the website. -->
 
 # Technologies
