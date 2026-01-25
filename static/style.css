@@ -14,6 +14,9 @@ body {
   padding-bottom: 80px;
   overflow-y: scroll;
 }
+body::-webkit-scrollbar {
+  display: none;
+}
 .content-wrapper {
   max-width: 900px;
   margin: 0 auto;
@@ -23,6 +26,7 @@ body {
 .content-wrapper ul {
   list-style-type: none;
   margin: 0;
+  padding: 0;
 }
 
 .site-title {
@@ -87,7 +91,8 @@ li.article a {
 }
 footer {
   text-align: center;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: #caebf2;
   color: #333333;
   position: fixed;
@@ -194,6 +199,10 @@ ul.topnav li a.active {
   background-color: #efefef;
   border: 3px solid black;
   border-top: 0px;
+  overflow-y: scroll;
+}
+.dropdown-content::-webkit-scrollbar {
+  display: none;
 }
 .show-content .dropdown-content {
   max-height: 500px;
