@@ -66,7 +66,14 @@
         {% for category_articles in articles %} {% for article in
         category_articles %}
         <li class="article">
-          <h2><a href="{{article.get_link()}}">{{article.get_title()}}</a></h2>
+          <h2>
+            <a
+              href="{{article.get_link()}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              >{{article.get_title()}}</a
+            >
+          </h2>
           <div class="dropdown-container">
             <button class="dropdown-toggle">
               <span class="arrow">&#9660;</span>
@@ -113,7 +120,7 @@
         const link = article["link"];
         const abstract = article["abstract"];
         li.innerHTML = `
-          <h2><a href="${link}">${title}</a></h2>
+          <h2><a href="${link}" rel="noopener noreferrer" target="_blank">${title}</a></h2>
           <div class="dropdown-container">
             <button class="dropdown-toggle">
               <span class="arrow">&#9660;</span>
